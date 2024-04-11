@@ -1,9 +1,16 @@
-import { Template } from '../../components/Template';
+import { Template, ImageCard } from '@/components';
 
 export default function GalleryPage(){
     return (
         <Template>
-            <h1>Gallery</h1>
+            <section className="grid grid-cols-3 gap-4">
+                <ImageCard />
+                <ImageCard />
+                <ImageCard />
+                <ImageCard />
+                <ImageCard />
+                <ImageCard />
+            </section>
         </Template>
     )
 }
