@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     return (
         <header className="bg-stone-950 text-white py-3">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-3xl font-bold">ImageUploader</h1>
+                <h1 className="text-3xl font-bold">Image Stock</h1>
             </div>
         </header>
     )
