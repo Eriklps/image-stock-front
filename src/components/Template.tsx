@@ -8,12 +8,12 @@ export const Template: React.FC<TemplateProps> = ({ children, loading }: Templat
         <>
             <Header />
                 <div className="container mx-auto mt-8 px-4">
-                    { children }
                     <RenderIf condition={loading}>
                         <div className="text-center">
                             <Loading />
                         </div>
                     </RenderIf>
+                    { children }
                 </div>
             <Footer />
         </>
