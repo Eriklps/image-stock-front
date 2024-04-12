@@ -11,10 +11,13 @@ export default function GalleryPage(){
     const [images, setImages] = useState<Image[]>([]);
     const [query, setQuery] = useState<string>('')
     const [extension, setExtension] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
 
     async function searchImages() {
+        setLoading(true)
         const result = await useService.search(query, extension);
         setImages(result);
+        setLoading(false)
     }
 
     function renderImageCard(image: Image) {
@@ -33,7 +36,7 @@ export default function GalleryPage(){
     }
 
     return (
-        <Template>
+        <Template loading={loading}>
             <section className='flex flex-col items-center justify-center my-5'>
                 <div className='flex space-x-4'>
                     
