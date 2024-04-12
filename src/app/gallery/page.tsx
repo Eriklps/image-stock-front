@@ -23,6 +23,7 @@ export default function GalleryPage(){
                         name={image.name} 
                         src={image.url} 
                         size={image.size}
+                        extension={image.extension}
                         uploadDate={image.uploadDate}  />
         )
     }
