@@ -1,3 +1,7 @@
+'use client'
+
+import { ToastContainer } from 'react-toastify'
+
 interface TemplateProps {
     children: React.ReactNode;
     loading?: boolean;
@@ -16,6 +20,13 @@ export const Template: React.FC<TemplateProps> = ({ children, loading = false }:
                     { children }
                 </div>
             <Footer />
+            <ToastContainer position='top-right' 
+                            autoClose={4000}
+                            hideProgressBar={false}
+                            draggable={false}
+                            closeOnClick={true}
+                            pauseOnHover={true}
+            />
         </>
     )
 }
