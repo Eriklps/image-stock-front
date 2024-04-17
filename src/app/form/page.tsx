@@ -60,7 +60,7 @@ export default function FormPage() {
                                onChange={formik.handleChange} 
                                value={formik.values.name} 
                                placeholder="Type image name" />
-                               {formik.errors.name}
+                               <span className="text-sm">{formik.errors.name}</span> 
                     </div>
 
                     <div className="mt-2 grid grid-cols-1">
@@ -71,12 +71,12 @@ export default function FormPage() {
                                onChange={formik.handleChange} 
                                value={formik.values.tags} 
                                placeholder="Type tags comma separated" />
-                               {formik.errors.tags}
+                               <span className="text-sm">{formik.errors.tags}</span>
                     </div>
 
                     <div className="mt-2 grid grid-cols-1">
                         <label className="block text-lg font-medium leading-6 text-stone-950">Image: *</label>
-                        {formik.errors.file}
+                        <span className="text-sm">{formik.errors.file}</span>
                         <div className="mt-2 flex justify-center rounded-md border border-dashed border-stone-300 px-6 py-10">
                             <div className="text-center text-stone-400">
                                 <div className="mt-4 flex text-lg leading-6 text-stone-950">
