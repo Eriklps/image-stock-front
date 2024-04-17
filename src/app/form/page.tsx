@@ -5,14 +5,7 @@ import Link from 'next/link';
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useImageService } from '@/resources/image/image.service';
-
-interface FormProps {
-    name: string;
-    tags: string;
-    file: any;
-}
-
-const formScheme: FormProps = { name: '', tags: '', file: '' }
+import { FormProps, formScheme, formValidationScheme } from "./formScheme";
 
 export default function FormPage() {
 
@@ -23,7 +16,8 @@ export default function FormPage() {
 
     const formik = useFormik({
         initialValues: formScheme,
-        onSubmit: handleSubmit
+        onSubmit: handleSubmit,
+        validationSchema: formValidationScheme
     })
 
     async function handleSubmit(data: FormProps) {
@@ -60,21 +54,33 @@ export default function FormPage() {
                 <form onSubmit={formik.handleSubmit}>
                     <div className="grid grid-cols-1">
                         <label className="block text-lg font-medium leading-6 text-stone-950">Name: *</label>
-                        <input type="text" value={formik.values.name} id="name" onChange={formik.handleChange} placeholder="Type image name" className='border px-5 py-2 rounded-lg text-stone-950' />
+                        <input className='border px-5 py-2 rounded-lg text-stone-950'
+                               id="name"
+                               type="text" 
+                               onChange={formik.handleChange} 
+                               value={formik.values.name} 
+                               placeholder="Type image name" />
+                               {formik.errors.name}
                     </div>
 
                     <div className="mt-2 grid grid-cols-1">
                         <label className="block text-lg font-medium leading-6 text-stone-950">Tags: *</label>
-                        <input type="text" value={formik.values.tags} id="tags" onChange={formik.handleChange} placeholder="Type tags comma separated" className='border px-5 py-2 rounded-md text-stone-950' />
+                        <input className='border px-5 py-2 rounded-md text-stone-950'
+                               id="tags" 
+                               type="text" 
+                               onChange={formik.handleChange} 
+                               value={formik.values.tags} 
+                               placeholder="Type tags comma separated" />
+                               {formik.errors.tags}
                     </div>
 
                     <div className="mt-2 grid grid-cols-1">
                         <label className="block text-lg font-medium leading-6 text-stone-950">Image: *</label>
+                        {formik.errors.file}
                         <div className="mt-2 flex justify-center rounded-md border border-dashed border-stone-300 px-6 py-10">
                             <div className="text-center text-stone-400">
                                 <div className="mt-4 flex text-lg leading-6 text-stone-950">
                                     <label className="relative cursor-pointer rounded-md">
-
                                         <RenderIf condition={!imagePreview}>
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
