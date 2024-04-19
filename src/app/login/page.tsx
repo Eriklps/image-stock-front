@@ -6,7 +6,7 @@ import { LoginForm, formScheme, validationScheme } from "./formScheme";
 import { Formik, useFormik } from "formik";
 import { useAuth } from "@/resources";
 import { useRouter } from 'next/navigation'
-import { AccessToken, Credentials, User } from '@/resources/user/users.resources'
+import { AccessToken, Credentials, User } from "@/resources/user/users.resources";
 
 export default function Login(){
 
@@ -24,12 +24,12 @@ export default function Login(){
     });
 
     async function onSubmit(values: LoginForm){
-        if(!newUserState){
+        if(!newUserState) {
             const credentials: Credentials = { email: values.email, password: values.password }
             try {
-                const accessToken: AccessToken = await auth.authenticate(credentials);
+                const accessToken: AccessToken = await auth.authenticate(credentials)
                 router.push("/gallery")
-            } catch(error: any){
+            } catch(error: any) {
                 const message = error?.message;
                 notification.notify(message, "error")
             }

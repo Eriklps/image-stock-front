@@ -1,11 +1,11 @@
 import { AccessToken, Credentials, User, UserSessionToken } from './users.resources'
 
 class AuthService {
-    baseURL: string = process.env.NEXT_PUBLIC_API_URL + '/v1/users';
+    baseURL: string = 'http://localhost:8080/v1/users/';
     static AUTH_PARAM: string = "_auth";
 
     async authenticate(credentials: Credentials) : Promise<AccessToken> {
-        const response = await fetch(this.baseURL + "/auth", {
+        const response = await fetch(this.baseURL + "auth", {
             method: 'POST',
             body: JSON.stringify(credentials),
             headers: {
