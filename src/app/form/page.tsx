@@ -100,7 +100,15 @@ export default function FormPage() {
                         </div>
                     </div>
 
-                    <div className="mt-4 flex items-center justify-end gap-x-1">
+                    <div className="mt-4 flex items-center justify-end gap-x-1">                        
+                        <button type="submit" className='border px-4 py-2 rounded-md text-stone-950'>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                            </span>
+                        </button>
+
                         <button className='border px-4 py-2 rounded-md text-stone-950'>
                             <Link href="/gallery">
                             <span>
@@ -109,14 +117,6 @@ export default function FormPage() {
                                 </svg>
                             </span>
                             </Link>
-                        </button>
-                        
-                        <button type="submit" className='border px-4 py-2 rounded-md text-stone-950'>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                </svg>
-                            </span>
                         </button>
                     </div>
                 </form>
