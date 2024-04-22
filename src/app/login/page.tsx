@@ -17,7 +17,7 @@ export default function Login(){
     const notification = useNotification();
     const router = useRouter();
 
-    const { values, handleChange, handleSubmit, errors } = useFormik<LoginForm>({
+    const { values, handleChange, handleSubmit, errors, resetForm } = useFormik<LoginForm>({
         initialValues: formScheme,
         validationSchema: validationScheme,
         onSubmit: onSubmit
@@ -25,11 +25,26 @@ export default function Login(){
 
     async function onSubmit(values: LoginForm){
         if(!newUserState) {
+            
             const credentials: Credentials = { email: values.email, password: values.password }
+            
             try {
                 const accessToken: AccessToken = await auth.authenticate(credentials)
                 router.push("/gallery")
             } catch(error: any) {
+                const message = error?.message;
+                notification.notify(message, "error")
+            }
+        } else {
+
+            const user: User = { email: values.email, name: values.name, password: values.password }
+            
+            try {
+                await auth.save(user);
+                notification.notify("Success on saving user", "success")
+                resetForm();
+                setNewUserState(false);
+            } catch(error: any){
                 const message = error?.message;
                 notification.notify(message, "error")
             }
