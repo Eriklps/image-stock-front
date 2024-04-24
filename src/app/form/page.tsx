@@ -1,6 +1,6 @@
 'use client'
 
-import { RenderIf, Template, useNotification } from "@/components";
+import { RenderIf, Template, Button, InputText, useNotification } from "@/components";
 import Link from 'next/link';
 import { useFormik } from "formik";
 import { useState } from "react";
@@ -54,11 +54,10 @@ export default function FormPage() {
                 <form onSubmit={formik.handleSubmit}>
                     <div className="grid grid-cols-1">
                         <label className="block text-lg font-medium leading-6 text-stone-950">Name: *</label>
-                        <input className='border px-5 py-2 rounded-lg text-stone-950'
+                        <InputText
                                id="name"
-                               type="text" 
                                onChange={formik.handleChange} 
-                               value={formik.values.name} 
+                               value={formik.values.name}
                                placeholder="Type image name" />
                                <span className="text-sm">{formik.errors.name}</span> 
                     </div>
@@ -67,7 +66,6 @@ export default function FormPage() {
                         <label className="block text-lg font-medium leading-6 text-stone-950">Tags: *</label>
                         <input className='border px-5 py-2 rounded-md text-stone-950'
                                id="tags" 
-                               type="text" 
                                onChange={formik.handleChange} 
                                value={formik.values.tags} 
                                placeholder="Type tags comma separated" />
@@ -101,23 +99,10 @@ export default function FormPage() {
                     </div>
 
                     <div className="mt-4 flex items-center justify-end gap-x-1">                        
-                        <button type="submit" className='border px-4 py-2 rounded-md text-stone-950'>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                </svg>
-                            </span>
-                        </button>
-
-                        <button className='border px-4 py-2 rounded-md text-stone-950'>
-                            <Link href="/gallery">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                </svg>
-                            </span>
-                            </Link>
-                        </button>
+                        <Button type='submit' label='Save' />
+                        <Link href="/gallery">
+                            <Button type='button' label='Cancel' />
+                        </Link>
                     </div>
                 </form>
             </section>
