@@ -61,7 +61,7 @@ export default function GalleryPage(){
                         <Button label='Search' onClick={searchImages} />
 
                         <Link href="/form">
-                            <Button label='Upload Image' />
+                            <Button label='Upload' />
                         </Link>
                     </div>
                 </section>

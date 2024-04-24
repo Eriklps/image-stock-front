@@ -1,6 +1,6 @@
 'use client'
 
-import { Template, RenderIf, useNotification } from "@/components"
+import { Template, RenderIf, Button, InputText, useNotification } from "@/components"
 import { useState } from 'react'
 import { LoginForm, formScheme, validationScheme } from "./formScheme";
 import { Formik, useFormik } from "formik";
@@ -69,12 +69,10 @@ export default function Login(){
                                 <label className='block text-sm font-medium leading-6 text-gray-900'>Name: </label>
                             </div>
                             <div className="mt-2">
-                                <input className='border px-5 py-2 rounded-lg text-stone-950 w-full' 
-                                    type="text" 
-                                    id="name" 
+                            <InputText id='name'
                                     value={values.name}
                                     onChange={handleChange} />
-                                    <span className="text-sm">{errors.name}</span>
+                                <span className="text-sm">{errors.name}</span>
                             </div>
                         </RenderIf>
 
@@ -82,24 +80,21 @@ export default function Login(){
                             <label className='block text-sm font-medium leading-6 text-gray-900'>Email: </label>
                         </div>
                         <div className='mt-2'>
-                            <input className="border px-5 py-2 rounded-lg text-stone-950 w-full" 
-                                    type="text" 
-                                    id="email"
-                                    value={values.email}
-                                    onChange={handleChange} />
-                                    <span className="text-sm">{errors.email}</span>
+                        <InputText id='email'
+                                value={values.email}
+                                onChange={handleChange} />
+                            <span className="text-sm">{errors.email}</span>
                         </div>
 
                         <div>
                             <label className='block text-sm font-medium leading-6 text-gray-900'>Password: </label>
                         </div>
                         <div className="mt-2">
-                            <input className='border px-5 py-2 rounded-lg text-stone-950 w-full'
-                                    type="password" 
-                                    id="password"
-                                    value={values.password}
-                                    onChange={handleChange} />
-                                    <span className="text-sm">{errors.password}</span>
+                        <InputText id='password' 
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange} />
+                            <span className="text-sm">{errors.password}</span>
                         </div>
                             
                         <RenderIf condition={newUserState}>
@@ -107,47 +102,29 @@ export default function Login(){
                                 <label className='block text-sm font-medium leading-6 text-gray-900'>Confirm Password: </label>
                             </div>
                             <div className="mt-2">
-                                <input className='border px-5 py-2 rounded-lg text-stone-950 w-full'
-                                        type="password" 
-                                        id="passwordMatch" 
-                                        value={values.passwordMatch}
-                                        onChange={handleChange} />
-                                        <span className="text-sm">{errors.passwordMatch}</span>
+                            <InputText id='passwordMatch'
+                                    type="password"
+                                    value={values.passwordMatch}
+                                    onChange={handleChange} />
+                                <span className="text-sm">{errors.passwordMatch}</span>
                             </div>
                         </RenderIf>
 
-                        <div className="flex items-center justify-center py-4">
+                        <div className="flex justify-center py-4 gap-2">
                             <RenderIf condition={newUserState}>
-                                <button type="submit" className='border px-4 py-2 rounded-lg text-stone-950'>
-                                    <span>
-                                        Save
-                                    </span>
-                                </button>
-
-                                <button type="button" 
-                                    className='border px-4 py-2 rounded-lg text-stone-950 mx-2'
-                                    onClick={event => setNewUserState(false)}>
-                                    <span>
-                                        Cancel
-                                    </span>
-                                </button>
+                                <Button type='submit'
+                                        label='Save' />
+                                <Button type='button' 
+                                        label='Cancel' 
+                                        onClick={event => setNewUserState(false)} />
                             </RenderIf>
                                 
                             <RenderIf condition={!newUserState}>
-                                <button type="submit"
-                                        className='border px-4 py-2 rounded-lg text-stone-950'>
-                                    <span>
-                                        Login
-                                    </span>
-                                </button>
-
-                                <button type="button" 
-                                        className='border px-4 py-2 rounded-lg text-stone-950 mx-2'
-                                        onClick={event => setNewUserState(true)}>
-                                    <span>
-                                        Sign Up
-                                    </span>
-                                </button>
+                                <Button type='submit' 
+                                        label='Login' />
+                                <Button type='button' 
+                                        label='Sign Up'
+                                        onClick={event => setNewUserState(true)} />
                             </RenderIf>
                         </div>
                     </form>
