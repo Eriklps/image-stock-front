@@ -112,18 +112,18 @@ export default function Login(){
 
                         <div className="flex justify-center py-4 gap-2">
                             <RenderIf condition={newUserState}>
-                                <Button type='submit'
-                                        label='Save' />
-                                <Button type='button' 
-                                        label='Cancel' 
+                                <Button type="submit"
+                                        label="Save" />
+                                <Button type="button"
+                                        label="Cancel" 
                                         onClick={event => setNewUserState(false)} />
                             </RenderIf>
                                 
                             <RenderIf condition={!newUserState}>
-                                <Button type='submit' 
-                                        label='Login' />
-                                <Button type='button' 
-                                        label='Sign Up'
+                                <Button type="submit"
+                                        label="Login" />
+                                <Button type="button" 
+                                        label="Sign Up"
                                         onClick={event => setNewUserState(true)} />
                             </RenderIf>
                         </div>

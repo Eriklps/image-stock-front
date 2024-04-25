@@ -80,6 +80,12 @@ class AuthService {
         return false;
     }
 
+    invalidateSession(): void {
+        try{
+            localStorage.removeItem(AuthService.AUTH_PARAM);
+        }catch(error){}
+    }
+
 }
 
 export const useAuth = () => new AuthService();
