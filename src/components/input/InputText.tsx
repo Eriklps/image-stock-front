@@ -13,6 +13,6 @@ export const InputText: React.FC<InputTextProps> = ({
     return (
         <input type={type}
                 {...rest}
-            className={`border px-5 py-2 rounded-lg text-stone-950 w-full`} />
+            className={`border px-5 py-2 rounded-lg text-stone-950 w-full hover:bg-stone-200`} />
     )
 }

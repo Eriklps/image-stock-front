@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useImageService } from '@/resources/image/image.service';
 import { FormProps, formScheme, formValidationScheme } from "./formScheme";
+import { ArrowUpTrayIcon } from '@heroicons/react/24/outline'
 
 export default function FormPage() {
 
@@ -65,7 +66,7 @@ export default function FormPage() {
 
                         <div className="mt-2 grid grid-cols-1">
                             <label className="block text-lg font-medium leading-6 text-stone-950">Tags: *</label>
-                            <input className='border px-5 py-2 rounded-md text-stone-950'
+                            <InputText
                                 id="tags" 
                                 onChange={formik.handleChange} 
                                 value={formik.values.tags} 
@@ -81,11 +82,7 @@ export default function FormPage() {
                                     <div className="mt-4 flex text-lg leading-6 text-stone-950">
                                         <label className="relative cursor-pointer rounded-md">
                                             <RenderIf condition={!imagePreview}>
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                                                </svg>
-                                            </span>
+                                                <ArrowUpTrayIcon className="size-6 text-stone-950" />
                                             </RenderIf>
 
                                             <RenderIf condition={!!imagePreview}>
